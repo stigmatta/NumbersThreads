@@ -71,8 +71,11 @@ BOOL CMultithreadDlg::Cls_OnInitDialog(HWND hwnd, HWND hwndFocus, LPARAM lParam)
 	hPlay3 = GetDlgItem(hwnd, IDC_BUTTON5);
 
 	Th1 = CreateThread(NULL, 0, Thread1, hList1, CREATE_SUSPENDED, NULL);
+	SetThreadPriority(Th1, THREAD_PRIORITY_IDLE);
 	Th2 = CreateThread(NULL, 0, Thread2, hList2, CREATE_SUSPENDED, NULL);
+	SetThreadPriority(Th2, THREAD_PRIORITY_ABOVE_NORMAL);
 	Th3 = CreateThread(NULL, 0, Thread3, hList3, CREATE_SUSPENDED, NULL);
+	SetThreadPriority(Th3, THREAD_PRIORITY_TIME_CRITICAL);
 	return TRUE;
 }
 
